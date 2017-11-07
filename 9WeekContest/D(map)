@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <iterator>
+#include <cstdlib>
+#include <cctype>   // для функции toupper
+using namespace std;
+
+
+
+int main()
+{
+	map<string, int> M;
+	int n = 0, m=0;
+	cin >> n;
+	string word;
+	map<string, int>::iterator it;
+
+	for (int i = 0; i < n; i++) {
+		cin >> word;
+		for (int i = 0; i < word.size(); i++) { word[i] = tolower(word[i]); }
+		
+		it = M.find(word);
+		if (it != M.end()) {
+			(it->second) += 1;
+		}
+		else {
+			M.insert(pair<string, int>(word, 1));
+		}
+
+	}
+
+	int maxx = 0;
+	string maxxs;
+
+	map<string, int>::iterator p = M.begin();
+	maxx = p->second;
+	maxxs = p->first;
+
+	while (p != M.end()) {
+		if (maxx < (p->second)) {
+			maxx = p->second;
+			maxxs = p->first;
+		}
+		p++;
+	}
+
+	cout << maxxs << " " << maxx;
+	system("pause");
+	return 0;
+}
