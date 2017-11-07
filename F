@@ -1,0 +1,46 @@
+#include <iostream>
+
+#include <math.h>
+
+using namespace std;
+
+int* readArray(int N)
+{
+	int* Arr = new int[N];
+	for (int i = 0; i<N; i++)
+	{
+		cin >> Arr[i];
+	}
+	return Arr;
+}
+
+int main()
+{
+	int N = 0;
+	cin >> N ;
+	int* A = new int[N];
+	A = readArray(N);
+
+	//bubblesort
+	for (int step = 1; step < N; step++)
+	{
+		for (int i = 0; i < (N - step); i++)
+		{
+			if (A[i] > A[i + 1])
+			{
+				A[i] = A[i] + A[i + 1];
+				A[i + 1] = A[i] - A[i + 1];
+				A[i] = A[i] - A[i + 1];
+			}
+		}
+	}
+	for (int i = 0; i < N; i++)
+	{
+		cout << A[i] << " ";
+	}
+
+	system("pause");
+
+	delete[] A;
+	return 0;
+}

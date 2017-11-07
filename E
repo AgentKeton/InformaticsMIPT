@@ -1,0 +1,45 @@
+#include <iostream>
+
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+	int N = 0, p=0;
+	cin >> N ;
+	bool* A = new bool[N];
+	for (int i = 0; i < N; i++)
+	{
+		A[i] = true;
+	}
+	A[0] = false;
+	p = 2;
+	for (int i = 0; i <= sqrt(N); i++)
+	{
+		if (A[i] == true)
+		{
+			p = i + 1;
+			for (int j = p; j <= N; j++)
+			{
+				if ((j + 1) % p == 0)
+				{
+					A[j] = false;
+				}
+			}
+		}
+		
+		
+	}
+	for (int i = 0; i < N; i++)
+	{
+		if (A[i] == true)
+		{
+			cout << i+1 << " ";
+		}
+	}
+	//system("pause");
+
+	//delete[] A;
+	return 0;
+}

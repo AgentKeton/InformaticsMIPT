@@ -1,0 +1,31 @@
+#include <iostream>
+#include <algorithm>    // подключаем sort
+#include <vector>       // подключаем vector
+
+using namespace std;
+
+int* readArray(int N)
+{
+	int* Arr = new int[N];
+	for (int i = 0; i<N; i++) 
+	{
+		cin >> Arr[i];
+	}
+	return Arr;
+}
+
+int main()
+{
+	int N = 0;
+	cin >> N;
+	int* A;
+	A = readArray(N);
+	vector<int> Avector(A, A + N);
+
+	sort(Avector.begin(), Avector.end()); //от начала до конца вектора
+	cout << Avector[0] + Avector[1] << " " << Avector[N - 2] + Avector[N - 1] << endl;
+	system("pause");
+
+	delete[] A;
+	return 0;
+}

@@ -1,0 +1,24 @@
+#include <iostream>
+#include <math.h>
+ 
+int main()
+{
+    int N=0, summ=0;
+    std::cin >> N;
+    int Arr[N];
+    for (int i=0; i<N; i++)
+    {
+        std::cin >> Arr[i];
+    }
+    for  (int i=0; i<N; i++)
+    {
+		if ((i%21)==0)
+		{
+		    summ=summ+Arr[i];
+		}
+		
+	}
+	std::cout << summ<< std::endl;
+    return 0;
+    
+}

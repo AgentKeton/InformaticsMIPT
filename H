@@ -1,0 +1,40 @@
+#include <iostream>
+#include <algorithm>    // подключаем sort
+#include <vector>       // подключаем vector
+#include <math.h>
+#include <stdlib.h> // подключаем qsort 
+
+using namespace std;
+
+int compare(const void * x1, const void * x2) // функция сравнения элементов массива
+{
+	return (*(int*)x1 - *(int*)x2); // если результат вычитания равен 0, то числа равны, < 0: x1 < x2; > 0: x1 > x2
+}
+
+int* readArray(int N)
+{
+	int* Arr = new int[N];
+	for (int i = 0; i<N; i++)
+	{
+		cin >> Arr[i];
+	}
+	return Arr;
+}
+
+int main()
+{
+	int N = 0;
+	cin >> N;
+	int* A = new int[N];
+	A = readArray(N);
+
+	qsort(A, N, sizeof(int), compare);
+	for (int i = 0; i < N; i++)
+	{
+		cout << A[i] << " ";
+	}
+	system("pause");
+
+	delete[] A;
+	return 0;
+}

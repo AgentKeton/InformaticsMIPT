@@ -1,0 +1,49 @@
+#include <iostream>
+#include <algorithm>    // подключаем sort
+#include <vector>       // подключаем vector
+#include <math.h>
+
+using namespace std;
+
+
+void swap(int &x, int &y)
+{
+	x = x + y;
+	y = x - y;
+	x = x - y;
+}
+
+int main()
+{
+	int N = 0;
+	cin >> N;
+	int A[4];
+
+	for (int i = 0; i < 4; i++)
+	{
+		A[3 - i] = N % 10;
+		N = (N - A[3 - i])/10;
+	}
+
+	vector<int> Av(A, A + 4);
+	sort(Av.begin(), Av.end()); //от начала до конца вектора
+
+	if (Av[0] == 0)
+	{
+		int i = 1;
+		while (Av[0]==0)
+		{
+			swap(Av[0], Av[i]);
+			i++;
+		}
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		cout << Av[i];
+	}
+	//system("pause");
+
+	//delete[] A;
+	return 0;
+}

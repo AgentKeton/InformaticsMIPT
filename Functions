@@ -1,0 +1,29 @@
+#include <iostream>
+#include <math.h>
+
+int* readArray(int N)
+{
+	int* Arr = new int[N];
+	for (int i = 0; i<N; i++) 
+	{
+		std::cin >> Arr[i];
+	}
+	return Arr;
+}
+
+int main()
+{
+	int N = 0;
+	std::cin >> N;
+	int* A;
+	A = readArray(N);
+	for (int i = 0; i < N; i++)
+	{
+		std::cout << A[i]<<" ";
+	}
+	
+	system("pause");
+
+	delete[] A;
+	return 0;
+}
