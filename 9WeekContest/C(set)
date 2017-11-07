@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+#include <set>
+#include <iterator>
+#include <cstdlib>
+#include <cctype>   // для функции toupper
+using namespace std;
+
+
+
+int main()
+{
+	set<int> S;
+	int n = 0, m=0;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> m;
+		S.insert(m);
+	}
+	cout << S.size();
+	system("pause");
+	return 0;
+}
