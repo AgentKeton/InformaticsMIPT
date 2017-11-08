@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+#include <iterator>
+#include <cstdlib>
+//using namespace std;
+
+
+int main()
+{
+	//только без кратных ребер
+	std::map<int, std::map<int, int>> G;
+	int n;
+	std::cin >> n;
+	int from, to, weight;
+	for (int i = 0; i < n; i++) {
+		std::cin >> from >> to >> weight;
+		G[from].insert(std::pair<int, int>(to, weight));
+	}
+
+	std::map<int, std::map<int, int>>::iterator it = G.begin();
+
+	int sum;
+
+	for (auto it = G.begin(); it != G.end(); it++) {
+		sum = 0;
+		for (auto itt = (it->second).begin(); itt != (it->second).end(); itt++) {
+			sum += (itt->second);
+		}
+		std::cout << it->first << " " << it->second.size() << " " << sum<<std::endl;
+	}
+
+	system("pause");
+	return 0;
+}
