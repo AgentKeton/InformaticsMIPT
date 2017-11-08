@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void dfs(vector <vector<int>> &G, int start, vector<bool> &visited);
+
+int main(){
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> G(n);
+    int a, b, k, v1;
+    k = 0;
+    for (int i = 0; i < m; ++i){
+        cin >> a;
+        if (i == 0){
+            v1 = a;
+        }
+        cin >> b;
+
+        vector<bool> used(n, false);
+        dfs(G, v1, used);
+
+        int sum = 0;
+        for (int x : used){
+            sum += x;
+        }
+        if (sum == n){
+            break;
+        }
+
+        G[a].push_back(b);
+        G[b].push_back(a);
+        k++;
+
+    }
+    cout << k;
+}
+
+void dfs(vector <vector<int>> &G, int start, vector<bool> &visited) {
+	visited[start] = true;
+	for (int x : G[start])
+		if (!visited[x])
+			dfs(G, x, visited);
+}
