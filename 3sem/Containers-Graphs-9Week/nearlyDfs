@@ -1,0 +1,70 @@
+#include <iostream>
+#include <string>
+#include <set>
+#include <map>
+#include <vector>
+#include <iterator>
+#include <cstdlib>
+//using namespace std;
+void dfs1(std::set<int> &GG, int N, std::map<int, std::vector<int>> &G);
+
+bool linked(std::map<int, std::vector<int>> &G,std::set<int> GG) {
+	
+
+	
+	std::map<int, std::vector<int>>::iterator itG=G.begin();
+	int check;
+	
+	
+	itG = G.begin();
+	int N = itG->first;
+	dfs1(GG, N, G);
+	if (GG.size()!=0) {
+		return 0;
+	}
+	return 1;
+}
+void dfs1(std::set<int> &GG, int N,std::map<int, std::vector<int>> &G) {
+	if (GG.find(N)!=GG.end()) {
+		GG.erase(N);
+		int i = 0;
+		
+		while (i<G[N].size()) {
+			dfs1(GG,G[N][i],G);
+			i++;
+		}
+	}
+
+}
+
+int main()
+{
+	std::map<int, std::vector<int>> G;
+	int n, m;
+	std::cin >> n>>m;
+	int from, to;
+	std::set<int> GG;
+	int k=0;
+	int h = 1;
+	for (int i = 0; i < m; i++) {
+		GG.clear();
+		std::cin >> from >> to;
+		G[from].push_back(to);
+		G[to].push_back(from);
+
+		for (int i = 0; i < n; i++) {
+			GG.insert(i);
+		}
+		if (h) {
+			if (linked(G, GG)) {
+				k = i + 1;
+				h = 0;
+			}
+		}
+	}
+	std::cout << k << std::endl;
+	
+	
+	system("pause");
+	return 0;
+}
