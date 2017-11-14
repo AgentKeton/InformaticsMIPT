@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+#include <utility>
+#include <string>
+
+
+class MyClass {
+private:
+	std::vector<std::pair<int, std::string>> MyVector;
+
+public:
+	MyClass & operator+=(const MyClass & t) {
+		for (auto x: t.MyVector) {
+			bool in = false;
+			for (auto y : MyVector) {
+				if (x == y) { in = true; break; }
+			}
+			if (!in) { MyVector.push_back(x); }
+		}
+		return *this;
+	}
+
+	void addElement(int n, std::string s) {
+		std::pair<int, std::string> NewPair(n, s);
+		bool in = false;
+		for (auto x : MyVector) {
+			if (NewPair == x) { in = true; break; }
+		}
+		if (!in) {
+			MyVector.push_back(NewPair);
+		}
+	}
+
+	void printStructures() {
+		for (auto x : MyVector) {
+			std::cout << x.first << ' ' << x.second << std::endl;
+		}
+	}
+
+};
+
+int main() {
+	MyClass Elem, el2;
+	Elem.addElement(2, "Hello");
+	Elem.addElement(1, "World");
+	el2.addElement(3, "hi");
+	el2.addElement(2, "Hello");
+	Elem += el2;
+	el2.printStructures();
+	Elem.printStructures();
+
+	system("pause");
+	return 0;
+
+}
