@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+#include <utility>
+#include <string>
+
+
+class MyClass {
+private:
+	std::vector<std::pair<int, std::string>> MyVector;
+
+public:
+	void addElement(int n, std::string s) {
+		std::pair<int, std::string> NewPair(n, s);
+		bool in = false;
+		for (auto x : MyVector) {
+			if (NewPair == x) { in = true; break; }
+		}
+		if (!in) {
+			MyVector.push_back(NewPair);
+		}
+	}
+
+	void printStructures() {
+		for (auto x : MyVector) {
+			std::cout << x.first << ' ' << x.second << std::endl;
+		}
+	}
+
+};
+
+int main() {
+	MyClass Elem;
+	Elem.addElement(2, "Hello");
+	Elem.addElement(1, "World");
+	Elem.printStructures();
+
+	system("pause");
+	return 0;
+
+}
