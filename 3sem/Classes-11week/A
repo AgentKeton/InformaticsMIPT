@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+
+using namespace std;
+
+class CalendarData {
+private:
+    int day_, month_, year_;
+    
+public:
+    CalendarData(int inputday, int inputmonth, int inputyear) {
+		day_=inputday;
+		month_=inputmonth;
+		year_=inputyear; 
+	}
+	
+	~CalendarData() {
+		cout<<this->day_<<'.'<<this->month_<<'.'<<this->year_;
+	}
+	
+};
