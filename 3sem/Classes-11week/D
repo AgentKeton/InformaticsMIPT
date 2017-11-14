@@ -1,0 +1,25 @@
+#include <iostream>
+#include <map>
+
+
+class FrequencyTree {
+public:
+	std::map<int, int> Tree;
+
+	FrequencyTree() { }
+	
+	void addValue(int key) {
+		std::map<int, int>::iterator it = Tree.find(key);
+		if (it != Tree.end()) { Tree[key] += 1; }
+		else { Tree.insert(std::pair<int, int>(key, 1)); }
+	}
+
+	void printValues() {
+		for (auto it = Tree.begin(); it != Tree.end(); ++it)
+		{
+			std:: cout << it->first << " " << it->second << std:: endl;
+		}
+		
+	}
+
+};
