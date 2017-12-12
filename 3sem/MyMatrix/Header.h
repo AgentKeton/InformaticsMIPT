@@ -1,3 +1,5 @@
+
+
 #ifndef header_H
 #define header_H
 //Квадратная матрица
@@ -48,6 +50,27 @@ public:
 			}
 			std::cout << "  "<<std::endl;
 		}
+	}
+	
+	
+	SquareMatrix operator+(const SquareMatrix & other) {
+		SquareMatrix SumMatrix(dim);
+		for (int i = 0; i < dim; i++) {
+			for (int j = 0; j < dim; j++) {
+				SumMatrix.arr2d[i][j] = arr2d[i][j] + other.arr2d[i][j];
+			}
+		}		
+		return SumMatrix;
+	}
+
+	SquareMatrix operator-(const SquareMatrix & other) {
+		SquareMatrix SumMatrix(dim);
+		for (int i = 0; i < dim; i++) {
+			for (int j = 0; j < dim; j++) {
+				SumMatrix.arr2d[i][j] = arr2d[i][j] - other.arr2d[i][j];
+			}
+		}
+		return SumMatrix;
 	}
 };
 
