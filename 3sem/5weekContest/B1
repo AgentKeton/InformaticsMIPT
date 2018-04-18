@@ -1,0 +1,45 @@
+#include <iostream>
+
+#include <cstdio>
+
+#include <cctype>   // для функции isdigit
+
+using namespace std;
+
+
+
+
+
+int main()
+
+{
+
+	char s[256];
+
+	gets_s(s);
+
+	int k = 0;
+
+
+
+	for (int i = 0; i < strlen(s); i++) {
+
+		if (isdigit(s[i])) if ((s[i]%2)==0) k++;
+
+
+
+	}
+
+
+
+	cout << k;
+
+	system("pause");
+
+
+
+
+
+	return 0;
+
+}
