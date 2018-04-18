@@ -1,0 +1,45 @@
+#include <iostream>
+
+#include <vector> // подключаем модель Векторов
+
+#include <string>
+
+//#include <cctype>   // для функции tolower
+
+using namespace std;
+
+
+
+int NOD(int a, int b) {
+
+	return b ? NOD(b, a % b) : a;
+
+}
+
+
+
+int main()
+
+{
+
+	int n = 0, m=0;
+
+	cin >> n>>m;
+
+
+
+	
+
+	
+
+	cout << NOD(n, m);
+
+
+
+	system("pause");
+
+
+
+	return 0;
+
+}
