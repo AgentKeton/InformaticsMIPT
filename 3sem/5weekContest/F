@@ -1,0 +1,71 @@
+#include <iostream>
+
+#include <vector> // подключаем модель Векторов
+
+#include <string>
+
+#include <cctype>   // для функции tolower
+
+using namespace std;
+
+
+
+
+
+int main()
+
+{
+
+	string s;
+
+	vector<string> vect;
+
+	int k = 0;
+
+	getline(cin, s);
+
+	for (int i = 0; i < s.length(); i++) {
+
+		if (s[i] == ' ') {
+
+			vect.insert(vect.end(), s.substr(k, i - k));
+
+			vect.insert(vect.end(), " ");
+
+			k = i + 1;
+
+		}
+
+		
+
+	}
+
+	vect.insert(vect.end(), s.substr(k));
+
+
+
+	for (int i = 0; i < vect.size(); i++) {
+
+		if ((vect[i].length() < 4) && (vect[i] != " ")) vect[i] = "";
+
+	}
+
+
+
+	for (int i = 0; i < vect.size(); i++) {
+
+		cout << vect[i];
+
+	}
+
+
+
+
+
+	system("pause");
+
+
+
+	return 0;
+
+}
