@@ -1,0 +1,57 @@
+#include <iostream>
+
+#include <vector> // подключаем модель Векторов
+
+#include <cmath>
+
+//#include <cctype>   // для функции tolower
+
+using namespace std;
+
+
+
+int prostoe(int n) {
+
+	int k = true;
+
+	for (int i = 2; i <= sqrt(n); i++) {
+
+		if ((n%i) == 0) {
+
+			k = false;
+
+			break;
+
+		}
+
+	}
+
+	return k;
+
+}
+
+
+
+int main()
+
+{
+
+	int n = 0;
+
+	cin >> n;
+
+	
+
+	if (prostoe(n)) cout << '1';
+
+	else cout << '0';
+
+
+
+	system("pause");
+
+
+
+	return 0;
+
+}
