@@ -1,0 +1,84 @@
+
+#include <iostream>
+
+#include <vector> // подключаем модель Векторов
+
+#include <cmath>
+
+#include <algorithm>
+
+//#include <cctype>   // для функции tolower
+
+using namespace std;
+
+
+
+
+
+int main()
+
+{
+
+	int n = 0, m = 0;
+
+	cin >> n >> m;
+
+	//int* arr = new int[n];
+
+	int ** arr = new int *[n];
+
+	for (int i = 0; i < n; i++) {
+
+		arr[i] = new int[n];
+
+	}
+
+	for (int i = 0; i < n; i++)
+
+		for (int j = 0; j < n; j++)
+
+			cin >> arr[i][j];
+
+
+
+	//теперь надо найти макс элемент на гл диагонали
+
+	int max = arr[0][0], k = 0;
+
+	for (int i = 0; i < n; i++) {
+
+		if (arr[i][i] > max) {
+
+			max = arr[i][i];
+
+			k = i;
+
+		}
+
+	}
+
+	for (int i = 0; i < n; i++) {
+
+		//меняем arr[k][i] and arr[m][i]
+
+		swap(arr[k][i], arr[m][i]);
+
+	}
+
+	for (int i = 0; i < n; i++) {
+
+		for (int j = 0; j < n; j++)
+
+			cout << arr[i][j] << ' ';
+
+		cout << '\n';
+
+	}
+
+	system("pause");
+
+
+
+	return 0;
+
+}
