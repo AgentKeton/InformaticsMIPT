@@ -1,0 +1,45 @@
+#include <iostream>
+
+#include <string>
+
+#include <cctype>   // для функции isdigit
+
+using namespace std;
+
+
+
+
+
+int main()
+
+{
+
+	string s, snew="";
+
+	getline(cin,s);
+
+	for (int i = 0; i < s.length(); i++) {
+
+		snew += s[i];
+
+		if ((i + 1) % 5 == 0) snew += " ";
+
+	}
+
+
+
+	cout << snew;
+
+
+
+
+
+
+
+	system("pause");
+
+
+
+	return 0;
+
+}
