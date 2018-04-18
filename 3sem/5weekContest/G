@@ -1,0 +1,69 @@
+#include <iostream>
+
+#include <vector> // подключаем модель Векторов
+
+#include <string>
+
+//#include <cctype>   // для функции tolower
+
+using namespace std;
+
+
+
+
+
+int main()
+
+{
+
+	string s, str="";
+
+	getline(cin, s);
+
+	vector<string> vect;
+
+
+
+	for (int i = 0; i < s.length(); i++) {
+
+		if (isdigit(s[i])) {
+
+			str += s[i];
+
+			if ((i + 1) < s.length() && !isdigit(s[i + 1])) {
+
+				vect.insert(vect.end(), str);
+
+				str = "";
+
+			}
+
+		}
+
+	}
+
+	int maxx = 0;
+
+	for (int i = 0; i < vect.size(); i++) {
+
+
+
+		if  (atoi(vect[i].c_str()) > maxx) maxx = atoi(vect[i].c_str());
+
+
+
+	}
+
+	
+
+
+
+  cout<<maxx;
+
+	system("pause");
+
+
+
+	return 0;
+
+}
