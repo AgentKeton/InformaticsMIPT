@@ -1,0 +1,57 @@
+def dfs(v,G,color,stek,used=None):
+
+    if used is None:
+
+        used=set()
+
+    used.add(v)
+
+    color[v]=1
+
+    for nei in G[v]:
+
+        if color[nei]==1:
+
+            print('NO')
+
+            exit(0)
+
+        elif (nei not in used) and color[nei]!=2:
+
+            dfs(nei,G,color,stek,used)
+
+    color[v]=2
+
+    stek.append(v)
+
+    
+
+n,m=[int(x) for x in input().split()]
+
+G=[[] for i in range(n)]
+
+for j in range(m):
+
+    v1,v2=[int(x) for x in input().split()]
+
+    G[v1].append(v2)
+
+
+
+color=[int(0) for i in range(n)]
+
+stek=[]
+
+
+
+for v in range(n):
+
+    if color[v]==0:
+
+        dfs(v,G,color,stek)
+
+
+
+stek.reverse()
+
+print(*stek)
