@@ -1,0 +1,45 @@
+n=int(input())
+
+m=int(input())
+
+A=[[] for j in range(n)]
+
+for i in range(m):
+
+    x,y = map(int, input().split())
+
+    A[x]+=[y]
+
+    A[y]+=[x]
+
+
+
+B=[]                  #сюда записываем вершины которые уже прошли
+
+def check(A,B,z):
+
+    if z in B:
+
+        return         #так выбираем самый длинный путь
+
+    B.append(z)
+
+    
+
+    for element in A[z]:
+
+        check(A, B, element)
+
+
+
+check(A, B, 0)
+
+
+
+if len(B) == n:
+
+    print('YES')
+
+else:
+
+    print('NO')
