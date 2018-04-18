@@ -1,0 +1,57 @@
+#include <iostream>
+
+#include <vector> // подключаем модель Векторов
+
+#include <string>
+
+//#include <cctype>   // для функции tolower
+
+using namespace std;
+
+
+
+
+
+int main()
+
+{
+
+	int n = 0;
+
+	cin >> n;
+
+	int* arr = new int[n];
+
+	for (int i = 0; i < n; i++) {
+
+		cin >> arr[i];
+
+	}
+
+	int minn = arr[0];
+
+	for (int i = 0; i < n; i++) {
+
+		if (minn > arr[i]) minn = arr[i];
+
+	}
+
+	int k = 0;
+
+	for (int i = 0; i < n; i++) {
+
+		if (arr[i] == minn) k++;
+
+	}
+
+	delete[] arr;
+
+	cout <<minn<<' '<< k;
+
+	system("pause");
+
+
+
+	return 0;
+
+}
