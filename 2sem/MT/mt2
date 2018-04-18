@@ -1,0 +1,187 @@
+class MT:
+
+    def __init__(self):
+
+        self.q_start='q1'
+
+        self.q=self.q_start
+
+        self.position=None
+
+        self.lenta=[]
+
+        self.tpereh={}
+
+
+
+    def downloadtpereh(self,filename):
+
+        file=open(filename,'r')
+
+        for string in file.readlines():
+
+            string=string.rstrip()
+
+            s1,s2=string.split('->')
+
+
+
+            #символ и состояние
+
+            symbol=''
+
+            for i in range(len(s1)):
+
+                if s1[i]!='q':
+
+                    symbol+=s1[i]
+
+                else:
+
+                    k=i
+
+                    break
+
+            q=''
+
+            for i in range(k,len(s1)):
+
+                q+=s1[i]
+
+
+
+            #новый символ, состояние, переход
+
+            symbol2=''
+
+            for i in range(len(s2)):
+
+                if s2[i]!='q' and s2[i]!='S':
+
+                    symbol2+=s2[i]
+
+                else:
+
+                    k=i
+
+                    break
+
+            qnew=''
+
+            b=0
+
+            for i in range(k,len(s2)):
+
+                if s2[i]!='R' and s2[i]!='L':
+
+                    qnew+=s2[i]
+
+                else:
+
+                    b=i
+
+                    break
+
+            if b:
+
+                step=s2[len(s2)-1]
+
+            else:
+
+                step=''
+
+
+
+            self.tpereh[(symbol,q)]=(symbol2,qnew,step)
+
+
+
+    def download_data(self,datafile):
+
+        self.lenta=[]
+
+        file=open(datafile,'r')
+
+        stroki=file.readlines()
+
+        for s in stroki:
+
+            s=s.rstrip()
+
+            for x in s:
+
+                self.lenta.append(x)
+
+
+
+    def work(self):
+
+        self.position=0
+
+
+
+        while self.q!='STOP':
+
+            for tupe in self.tpereh:
+
+                print((self.lenta[self.position],self.q),' ',tupe)
+
+
+
+                if (self.lenta[self.position],self.q)==tupe:
+
+
+
+                    self.lenta[self.position]=self.tpereh[tupe][0]
+
+                    self.q=self.tpereh[tupe][1]
+
+
+
+                    if self.tpereh[tupe][2]=='R':
+
+                        self.position+=1
+
+                        if len(self.lenta)==self.position:
+
+                            self.lenta.append('B')
+
+
+
+                    elif self.tpereh[tupe][2]=='L':
+
+                        if self.position==0:
+
+                            self.lenta=['B']+self.lenta
+
+                            self.position=0
+
+                        else:
+
+                            self.position-=1
+
+                    break
+
+
+
+        print(self.lenta)
+
+        return
+
+
+
+
+
+mt=MT()
+
+mt.downloadtpereh('input')
+
+mt.download_data('data')
+
+print(mt.tpereh)
+
+print(mt.lenta)
+
+mt.work()
+
+print(mt.lenta) #B-пустой символ
