@@ -1,0 +1,183 @@
+class Node:
+
+    def __init__(self, data):
+
+        self.data = data
+
+        self.left = None
+
+        self.right = None
+
+        self.parent=None
+
+        self.num_of_datas=1
+
+        self.height=1
+
+
+
+class Tree:
+
+    def __init__(self):
+
+        self.root = None
+
+
+
+    def find(self,data):
+
+        p=self.root
+
+        while p is not None and p.data!=data:
+
+            if data>p.data:
+
+                p=p.right
+
+            else:
+
+                p=p.left
+
+        return p
+
+    
+
+    def insert(self,data):
+
+        node=Node(data)
+
+        
+
+        p=self.find(data)
+
+        if p is not None:
+
+            p.num_of_datas+=1
+
+            return
+
+        if self.root is None:
+
+            self.root=node
+
+            return
+
+        p=self.root
+
+        while True:
+
+            if data<p.data:
+
+                if p.left is None:
+
+                    p.left=node
+
+                    node.parent=p
+
+                    self.treeheight(p)
+
+                    break
+
+                else:
+
+                    p=p.left
+
+            else:
+
+                if p.right is None:
+
+                    p.right=node
+
+                    node.parent=p
+
+                    self.treeheight(p)
+
+                    break
+
+                else:
+
+                    p=p.right
+
+    
+
+    def add(self,data):
+
+        if self.root is None:
+
+            self.root=Node(data)
+
+        else:
+
+            self.insert(data)
+
+
+
+    def leaves(self,used=None):
+
+        pass
+
+                    
+
+
+
+        
+
+    def treeheight(self,node):
+
+        l=node.left
+
+        r=node.right
+
+        hl=hr=0
+
+        if l is not None:
+
+            hl=l.height
+
+        if r is not None:
+
+            hr=r.height
+
+        node.height=max(hl,hr)+1
+
+        if node.parent is not None:
+
+            self.treeheight(node.parent)
+
+
+
+        
+
+    def print(self,p='first'):   #можно распечатать отдельное поддерево
+
+        if p=='first':
+
+            p=self.root
+
+        if p is None:
+
+            return
+
+        if p.left is not None:
+
+            self.print(p.left)
+
+        for i in range(p.num_of_datas):
+
+            print(p.data, end=' ')
+
+        if p.right is not None:
+
+            self.print(p.right)
+
+
+
+tree = Tree()
+
+for x in list(map(int,input().split())):
+
+    tree.add(x)
+
+
+
+print(tree.root.height)
