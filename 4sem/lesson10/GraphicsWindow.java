@@ -12,7 +12,7 @@ public class MoneyForNothing extends JFrame{
                 fSize = getSize ();
         if (fSize.height > sSize.height) {fSize.height = sSize.height;}
         if (fSize.width  > sSize.width)  {fSize.width = sSize.width;}
-        //координаты середины окна
+        //координаты верхнего левого угла окна
         setLocation ((sSize.width - fSize.width)/2,
                 (sSize.height - fSize.height)/2);
 
