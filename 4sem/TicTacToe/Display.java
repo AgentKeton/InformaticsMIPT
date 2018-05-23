@@ -21,7 +21,7 @@ public class Display extends JFrame {
 
     JButton button9=new JButton("");
     JButton buttonAns=new JButton("Who win?");
-    JButton button11=new JButton("");
+    JButton button11=new JButton("Reset");
 
     public Display() {
         super("Welcome to Tictactoe!");
@@ -58,7 +58,7 @@ public class Display extends JFrame {
         grid.add(button11);
 
         button9.setEnabled(false);
-        button11.setEnabled(false);
+        //button11.setEnabled(false);
 
         buttonAns.addActionListener(new ActionListener() {
             @Override
@@ -72,6 +72,23 @@ public class Display extends JFrame {
                 else {
                     buttonAns.setText("dead heat");
                 }
+            }
+        });
+
+        button11.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pole.init();
+                countsteps=0;
+                button0.setText("");
+                button1.setText("");
+                button2.setText("");
+                button3.setText("");
+                button4.setText("");
+                button5.setText("");
+                button6.setText("");
+                button7.setText("");
+                button8.setText("");
             }
         });
 
@@ -242,7 +259,6 @@ public class Display extends JFrame {
                     button8.setText("O");
                     pole.field[2][2]=2;
                     //resetButton.setEnabled(true);
-
                 }
             }
         });
