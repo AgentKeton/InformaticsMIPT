@@ -7,9 +7,9 @@ SELECT last_name, salary
       FROM employee
       WHERE department_id IN
 	      (SELECT department_id
-		     FROM DEPARTMENT
-			  WHERE location_id IN
-			     (SELECT location_id
-			        FROM LOCATION
-			       WHERE regional_group='CHICAGO')     /* CA??? */
+		 FROM DEPARTMENT
+		WHERE location_id IN
+			 (SELECT location_id
+			    FROM LOCATION
+			   WHERE regional_group='CHICAGO')     /* CA??? */
 		   );
