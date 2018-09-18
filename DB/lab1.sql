@@ -13,6 +13,7 @@ SELECT last_name, salary
 			    FROM LOCATION
 			   WHERE regional_group='CHICAGO')     /* CA??? */
 		   );
+		   
 select last_name,salary,job_id
 from [DfLessonDb].[dbo].employee
 where salary/(select tmp.average
@@ -20,4 +21,20 @@ where salary/(select tmp.average
 			FROM [DfLessonDb].[dbo].employee
 		    GROUP BY job_id) tmp
 		where tmp.job_id=employee.job_id)>(3./2)
-						;
+		;
+		
+select last_name,employee_id
+into tmp1
+from [DfLessonDb].[dbo].EMPLOYEE
+where job_id=671
+
+alter table tmp1
+ADD [num] int null
+go
+ 
+update tmp1
+set num =  ( select COUNT(*) from [DfLessonDb].[dbo].EMPLOYEE WHERE manager_id=tmp1.employee_id )  
+;
+select *
+from tmp1
+;
