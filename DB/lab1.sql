@@ -46,11 +46,18 @@ WHERE num=
 			FROM [DfLessonDb].[dbo].tmp5)
 ;
 
-SELECT regional_group, DATEDIFF ( day , order_date , ship_date ) as diff
-FROM [DfLessonDb].[dbo].SALES_ORDER,  [DfLessonDb].[dbo].CUSTOMER, [DfLessonDb].[dbo].EMPLOYEE, [DfLessonDb].[dbo].DEPARTMENT, [DfLessonDb].[dbo].LOCATION
-WHERE  LOCATION.location_id=DEPARTMENT.location_id
-AND DEPARTMENT.department_id=EMPLOYEE.department_id
-AND EMPLOYEE.employee_id=CUSTOMER.salesperson_id
-AND CUSTOMER.customer_id=SALES_ORDER.customer_id
-AND CAST(DATEDIFF ( day , order_date , ship_date ) AS FLOAT)/30 >1         /* возвращает, количество месяцев между датами d1 и d2 (возможно, с дробной частью)*/
+SELECT regional_group, CAST(avgNumOfDays as FLOAT)/30 as avgNumOfMonths
+FROM
+	(SELECT tmp_table.regional_group, AVG(diff) as avgNumOfDays
+	FROM
+		(SELECT regional_group, DATEDIFF ( day , order_date , ship_date ) as diff
+		FROM [DfLessonDb].[dbo].SALES_ORDER,  [DfLessonDb].[dbo].CUSTOMER, [DfLessonDb].[dbo].EMPLOYEE, [DfLessonDb].[dbo].DEPARTMENT, [DfLessonDb].[dbo].LOCATION
+		WHERE  LOCATION.location_id=DEPARTMENT.location_id
+		AND DEPARTMENT.department_id=EMPLOYEE.department_id
+		AND EMPLOYEE.employee_id=CUSTOMER.salesperson_id
+		AND CUSTOMER.customer_id=SALES_ORDER.customer_id
+		) tmp_table
+	GROUP BY tmp_table.regional_group
+	) tmp_table2
+WHERE avgNumOfDays/30>1
 ;
