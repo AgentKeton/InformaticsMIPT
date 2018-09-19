@@ -23,18 +23,34 @@ where salary/(select tmp.average
 		where tmp.job_id=employee.job_id)>(3./2)
 		;
 		
+select last_name,salary,job_id
+from [DfLessonDb].[dbo].employee
+where salary/(select tmp.average
+		from (SELECT  job_id ,  AVG(salary) AS average
+			FROM [DfLessonDb].[dbo].employee
+		    GROUP BY job_id) tmp
+		where tmp.job_id=employee.job_id)>(3./2)
+		;*/
+		
 select last_name,employee_id
-into tmp1
-from [DfLessonDb].[dbo].EMPLOYEE
-where job_id=671
+	into [DfLessonDb].[dbo].tmp5
+	from [DfLessonDb].[dbo].EMPLOYEE
+	where job_id=671
 
-alter table tmp1
+alter table [DfLessonDb].[dbo].tmp5
 ADD [num] int null
 go
  
-update tmp1
-set num =  ( select COUNT(*) from [DfLessonDb].[dbo].EMPLOYEE WHERE manager_id=tmp1.employee_id )  
-;
-select *
-from tmp1
+update [DfLessonDb].[dbo].tmp5
+set [DfLessonDb].[dbo].tmp5.num =  
+	( select COUNT(*) 
+		from [DfLessonDb].[dbo].EMPLOYEE 
+		WHERE manager_id=tmp5.employee_id )  
+
+
+SELECT last_name, employee_Id, num
+FROM [DfLessonDb].[dbo].tmp5
+WHERE num=
+		(SELECT MAX(num)
+			FROM [DfLessonDb].[dbo].tmp5)
 ;
