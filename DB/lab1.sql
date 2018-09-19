@@ -12,16 +12,7 @@ SELECT last_name, salary
 			 (SELECT location_id
 			    FROM LOCATION
 			   WHERE regional_group='CHICAGO')     /* CA??? */
-		   );
-		   
-select last_name,salary,job_id
-from [DfLessonDb].[dbo].employee
-where salary/(select tmp.average
-		from (SELECT  job_id ,  AVG(salary) AS average
-			FROM [DfLessonDb].[dbo].employee
-		    GROUP BY job_id) tmp
-		where tmp.job_id=employee.job_id)>(3./2)
-		;
+		 );
 		
 select last_name,salary,job_id
 from [DfLessonDb].[dbo].employee
