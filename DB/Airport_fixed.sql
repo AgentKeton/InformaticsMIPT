@@ -1,4 +1,4 @@
-USE [Airport]
+USE [Airport1]
 GO
 
 CREATE TABLE [Вылеты] (
@@ -28,7 +28,7 @@ CREATE TABLE [Маршрут] (
 	[Расстояние, км] decimal(5, 2) NOT NULL,
 	[Пункт вылета (код терминала)] integer NOT NULL,
 	[Пункт назначения (код терминала)] integer NOT NULL,
-	[Тип] integer NOT NULL,
+	[ID типа] integer NOT NULL,
 	CONSTRAINT [PK_Маршрут] PRIMARY KEY CLUSTERED ([ID маршрута])
 
 )
@@ -99,7 +99,7 @@ GO
 CREATE TABLE [Рейсы ] (
 	[ID рейса] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Номер рейса] varchar(50) NOT NULL,
-	[Номер маршрута] integer NOT NULL,
+	[ID маршрута] integer NOT NULL,
 	CONSTRAINT [PK_Рейсы ] PRIMARY KEY CLUSTERED ([ID рейса])
 
 )
