@@ -2,7 +2,7 @@ USE [Airport]
 GO
 
 CREATE TABLE [Вылеты] (
-	[ID вылета] int NOT NULL UNIQUE,
+	[ID вылета] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[ID самолета] integer NOT NULL,
 	[ID рейса] integer NOT NULL,
 	[Дата и время (фактические) вылета] datetime  NULL,
@@ -15,7 +15,7 @@ CREATE TABLE [Вылеты] (
 )
 GO
 CREATE TABLE [Аэропорты] (
-	[ID аэропорта] int NOT NULL UNIQUE,
+	[ID аэропорта] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Код аэропорта] nvarchar(50) NOT NULL UNIQUE,
 	[Название аэропорта] nvarchar(50) NOT NULL UNIQUE,
 	[Город ID] integer NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE [Аэропорты] (
 )
 GO
 CREATE TABLE [Маршрут] (
-	[ID маршрута] int NOT NULL UNIQUE,
+	[ID маршрута] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Расстояние, км] decimal(5, 2) NOT NULL,
 	[Пункт вылета (код терминала)] integer NOT NULL,
 	[Пункт назначения (код терминала)] integer NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE [Маршрут] (
 )
 GO
 CREATE TABLE [Самолет] (
-	[ID самолета] int NOT NULL UNIQUE,
+	[ID самолета] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Регистрационный номер] nvarchar(50) NOT NULL,
 	[Марка ID] integer NOT NULL,
 	[Дата выпуска] date NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE [Самолет] (
 )
 GO
 CREATE TABLE [Сотрудники экипажа] (
-	[ID сотрудника] int NOT NULL UNIQUE,
+	[ID сотрудника] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Фамилия] nvarchar(50) NOT NULL,
 	[Имя] nvarchar(50) NOT NULL,
 	[Телефон] nvarchar(50) NOT NULL,
@@ -53,14 +53,14 @@ CREATE TABLE [Сотрудники экипажа] (
 )
 GO
 CREATE TABLE [Типы маршрутов] (
-	[ID типа] int NOT NULL UNIQUE,
+	[ID типа] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Название типа] nvarchar NOT NULL,
 	CONSTRAINT [PK_Типы маршрутов] PRIMARY KEY CLUSTERED ([ID типа])
 
 )
 GO
 CREATE TABLE [Марки самолетов] (
-	[ID марки] int NOT NULL UNIQUE,
+	[ID марки] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Название] nvarchar(50) NOT NULL UNIQUE,
 	[Число мест] integer NOT NULL,
 	[Скорость полета, км/ч] decimal(8,2) NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE [Марки самолетов] (
 )
 GO
 CREATE TABLE [Города] (
-	[ID города] int NOT NULL UNIQUE,
+	[ID города] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Название города] nvarchar(50) NOT NULL,
 	[ID страны] integer NOT NULL,
 	CONSTRAINT [PK_Города] PRIMARY KEY CLUSTERED ([ID города])
@@ -90,14 +90,14 @@ ADD CONSTRAINT [AK_Экипаж] UNIQUE ([ID сотрудника], [ID выле
 GO 
 
 CREATE TABLE [Страны] (
-	[ID страны] int NOT NULL UNIQUE,
+	[ID страны] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Название] nvarchar(50) NOT NULL,
 	CONSTRAINT [PK_Страны] PRIMARY KEY CLUSTERED ([ID страны])
 
 )
 GO
 CREATE TABLE [Рейсы ] (
-	[ID рейса] int NOT NULL UNIQUE,
+	[ID рейса] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Номер рейса] nvarchar(50) NOT NULL,
 	[ID маршрута] integer NOT NULL,
 	CONSTRAINT [PK_Рейсы ] PRIMARY KEY CLUSTERED ([ID рейса])
@@ -118,14 +118,14 @@ ADD CONSTRAINT [АК_Контракты] UNIQUE ([ID сотрудника], [Д�
 GO 
 
 CREATE TABLE [Должности] (
-	[ID должности] int NOT NULL UNIQUE,
+	[ID должности] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Название] nvarchar(50) NOT NULL,
 	CONSTRAINT [PK_Должности] PRIMARY KEY CLUSTERED ([ID должности])
 
 )
 GO
 CREATE TABLE [Терминалы] (
-	[ID терминала] int NOT NULL UNIQUE,
+	[ID терминала] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[ID аэропорта] integer NOT NULL,
 	[Название терминала] nvarchar(50) NOT NULL,
 	CONSTRAINT [PK_Терминалы] PRIMARY KEY CLUSTERED ([ID терминала])
@@ -133,14 +133,14 @@ CREATE TABLE [Терминалы] (
 )
 GO
 CREATE TABLE [список дней недели] (
-	[ID дня недели] int NOT NULL UNIQUE,
+	[ID дня недели] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[название дня недели] nvarchar(50) NOT NULL,
 	CONSTRAINT [PK_список дней недели] PRIMARY KEY CLUSTERED ([ID дня недели])
 
 )
 GO
 CREATE TABLE [Расписание рейсов] (
-	[ID расписания конкретного рейса] int NOT NULL UNIQUE,
+	[ID расписания конкретного рейса] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[ID рейса] integer NOT NULL,
 	[дата начала действия расписания] date NOT NULL,
 	[дата окончания действия расписания] date NOT NULL,
@@ -149,7 +149,7 @@ CREATE TABLE [Расписание рейсов] (
 )
 GO
 CREATE TABLE [Расписание по дням недели] (
-	[ID расписания по дням недели] int NOT NULL UNIQUE,
+	[ID расписания по дням недели] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[ID расписания] integer NOT NULL,
 	[ID дня недели] integer NOT NULL,
 	[Время отправления] time NOT NULL,
