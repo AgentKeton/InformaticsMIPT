@@ -53,7 +53,7 @@ CREATE TABLE [Сотрудники экипажа] (
 )
 GO
 CREATE TABLE [Типы маршрутов] (
-	[ID типа] int IDENTITY(1,1) NOT NULL UNIQUE,
+	[ID типа] int NOT NULL UNIQUE,
 	[Название типа] nvarchar NOT NULL,
 	CONSTRAINT [PK_Типы маршрутов] PRIMARY KEY CLUSTERED ([ID типа])
 
