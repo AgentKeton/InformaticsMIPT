@@ -54,7 +54,7 @@ CREATE TABLE [Сотрудники экипажа] (
 GO
 CREATE TABLE [Типы маршрутов] (
 	[ID типа] int NOT NULL UNIQUE,
-	[Название типа] nvarchar NOT NULL,
+	[Название типа] nvarchar(50) NOT NULL,
 	CONSTRAINT [PK_Типы маршрутов] PRIMARY KEY CLUSTERED ([ID типа])
 
 )
@@ -133,7 +133,7 @@ CREATE TABLE [Терминалы] (
 )
 GO
 CREATE TABLE [список дней недели] (
-	[ID дня недели] int IDENTITY(1,1) NOT NULL UNIQUE,
+	[ID дня недели] int NOT NULL UNIQUE,
 	[название дня недели] nvarchar(50) NOT NULL,
 	CONSTRAINT [PK_список дней недели] PRIMARY KEY CLUSTERED ([ID дня недели])
 
