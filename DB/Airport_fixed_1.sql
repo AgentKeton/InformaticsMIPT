@@ -25,7 +25,7 @@ CREATE TABLE [Аэропорты] (
 GO
 CREATE TABLE [Маршрут] (
 	[ID маршрута] int IDENTITY(1,1) NOT NULL UNIQUE,
-	[Расстояние, км] decimal(5, 2) NOT NULL,
+	[Расстояние, км] decimal(8, 2) NOT NULL,
 	[Пункт вылета (код терминала)] integer NOT NULL,
 	[Пункт назначения (код терминала)] integer NOT NULL,
 	[ID типа] integer NOT NULL,
