@@ -63,8 +63,8 @@ CREATE TABLE [Марки самолетов] (
 	[ID марки] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Название] nvarchar(50) NOT NULL UNIQUE,
 	[Число мест] integer NOT NULL,
-	[Скорость полета, км/ч] decimal(8,2) NOT NULL,
-	[Максимальная дальность, км] decimal(8,2) NOT NULL,
+	[Скорость полета, км/ч] NOT NULL,
+	[Максимальная дальность, км] NOT NULL,
 	CONSTRAINT [PK_Марки самолетов] PRIMARY KEY CLUSTERED ([ID марки])
 
 )
