@@ -86,11 +86,11 @@ ALTER TABLE [Экипаж] CHECK CONSTRAINT [Экипаж_fk1]
 GO
 
 
-ALTER TABLE [Рейсы ] WITH CHECK ADD CONSTRAINT [Рейсы _fk0] FOREIGN KEY ([ID маршрута]) REFERENCES [Маршрут]([ID маршрута])
+ALTER TABLE [Рейсы] WITH CHECK ADD CONSTRAINT [Рейсы_fk0] FOREIGN KEY ([ID маршрута]) REFERENCES [Маршрут]([ID маршрута])
 ON UPDATE CASCADE
 ON DELETE CASCADE
 GO
-ALTER TABLE [Рейсы ] CHECK CONSTRAINT [Рейсы _fk0]
+ALTER TABLE [Рейсы] CHECK CONSTRAINT [Рейсы_fk0]
 GO
 
 ALTER TABLE [Контракты] WITH CHECK ADD CONSTRAINT [Контракты_fk0] FOREIGN KEY ([ID сотрудника]) REFERENCES [Сотрудники экипажа]([ID сотрудника])
@@ -116,7 +116,7 @@ ALTER TABLE [Терминалы] CHECK CONSTRAINT [Терминалы_fk0]
 GO
 
 
-ALTER TABLE [Расписание рейсов] WITH CHECK ADD CONSTRAINT [Расписание рейсов_fk0] FOREIGN KEY ([ID рейса]) REFERENCES [Рейсы ]([ID рейса])
+ALTER TABLE [Расписание рейсов] WITH CHECK ADD CONSTRAINT [Расписание рейсов_fk0] FOREIGN KEY ([ID рейса]) REFERENCES [Рейсы]([ID рейса])
 ON UPDATE CASCADE
 ON DELETE CASCADE
 GO
