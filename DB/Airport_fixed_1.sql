@@ -25,7 +25,7 @@ CREATE TABLE [Аэропорты] (
 GO
 CREATE TABLE [Маршрут] (
 	[ID маршрута] int IDENTITY(1,1) NOT NULL UNIQUE,
-	[Расстояние, км] decimal(8, 2) NOT NULL,
+	[Расстояние, км] int NOT NULL,
 	[Пункт вылета (код терминала)] integer NOT NULL,
 	[Пункт назначения (код терминала)] integer NOT NULL,
 	[ID типа] integer NOT NULL,
@@ -67,8 +67,8 @@ CREATE TABLE [Марки самолетов] (
 	[ID марки] int IDENTITY(1,1) NOT NULL UNIQUE,
 	[Название] nvarchar(50) NOT NULL UNIQUE,
 	[Число мест] integer NOT NULL,
-	[Скорость полета, км/ч] NOT NULL,
-	[Максимальная дальность, км] NOT NULL,
+	[Скорость полета, км/ч] int NOT NULL,
+	[Максимальная дальность, км] int NOT NULL,
 	CONSTRAINT [PK_Марки самолетов] PRIMARY KEY CLUSTERED ([ID марки])
 )
 GO
