@@ -8,7 +8,7 @@ GO
 ALTER TABLE [Вылеты] CHECK CONSTRAINT [Вылеты_fk1] /* а ето че */
 GO
 
-ALTER TABLE [Вылеты] WITH CHECK ADD CONSTRAINT [Вылеты_fk2] FOREIGN KEY ([ID рейса]) REFERENCES [Рейсы ]([ID рейса])
+ALTER TABLE [Вылеты] WITH CHECK ADD CONSTRAINT [Вылеты_fk2] FOREIGN KEY ([ID рейса]) REFERENCES [Рейсы]([ID рейса])
 ON UPDATE CASCADE
 ON DELETE CASCADE
 GO
