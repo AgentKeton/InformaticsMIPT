@@ -148,6 +148,12 @@ CREATE TABLE [Расписание рейсов] (
 	CONSTRAINT [PK_Расписание рейсов] PRIMARY KEY CLUSTERED ([ID расписания конкретного рейса])
 )
 GO
+ALTER TABLE [Расписание рейсов]  
+ADD CONSTRAINT [UQ_Расписание рейсов 1] UNIQUE ([ID рейса], [дата начала действия расписания])   
+GO 
+ALTER TABLE [Расписание рейсов]  
+ADD CONSTRAINT [UQ_Расписание рейсов 2] UNIQUE ([ID рейса], [дата окончания действия расписания])   
+GO 
 
 CREATE TABLE [Расписание по дням недели] (
 	[ID расписания по дням недели] int IDENTITY(1,1) NOT NULL UNIQUE,
